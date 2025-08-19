@@ -5,11 +5,9 @@ let find_lcs (type a) (l1: a list) (l2: a list) (module M: Map.OrderedType with 
       let v = Memoizer.find (xs,ys) context in
       v,context
     else
-      (let list_printer = Format.(pp_print_list ~pp_sep:(fun f () -> Format.pp_print_string f ",") pp_print_int) in
-       Format.printf "Computing for:\n%a\n%a\n" list_printer (Obj.magic xs) list_printer (Obj.magic ys);
        let v = go context (xs,ys) in
        let context = Memoizer.add (xs,ys) v context in
-       v,context)
+       v,context
   and go context = function
     | [],[] | [],_ | _,[] -> []
     | x::xs, y::ys when x=y ->
