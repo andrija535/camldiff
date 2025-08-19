@@ -1,0 +1,7 @@
+# OCaml build files
+_build/
+_opam/
+
+# Emacs files
+*~
+\#*\#
